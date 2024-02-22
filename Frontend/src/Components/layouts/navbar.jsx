@@ -24,6 +24,9 @@ const Navbar = () => {
                 Home
               </li>
               <li className="cursor-pointer hover:text-red-500 hover:underline mb-2">
+                Services
+              </li>
+              <li className="cursor-pointer hover:text-red-500 hover:underline mb-2">
                 About us
               </li>
               <li className="cursor-pointer hover:text-red-500 hover:underline">
@@ -56,6 +59,9 @@ const Navbar = () => {
           <ul className="font-medium flex flex-col md:flex-row md:mr-8">
             <li className="cursor-pointer hover:text-red-500 hover:underline hover:underline-offset-4 mb-2 md:mb-0 md:mr-8">
               Home
+            </li>
+            <li className="cursor-pointer hover:text-red-500 hover:underline hover:underline-offset-4 mb-2 md:mb-0 md:mr-8">
+              Services
             </li>
             <li className="cursor-pointer hover:text-red-500 hover:underline hover:underline-offset-4 mb-2 md:mb-0 md:mr-8">
               About us
