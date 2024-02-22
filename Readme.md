@@ -2,6 +2,8 @@
 
 It is a comprehensive exploration of fullstack development, where I practice and learn by doing building APIs, crafting middleware, defining routes, and understanding numerous other enlightening concepts.
 
+It have both perspective i.e. user and admin panel.
+
 ## Built with
 
 [![React.js](https://img.shields.io/badge/React.js-blue)](https://reactjs.org/)
@@ -30,5 +32,6 @@ It is a comprehensive exploration of fullstack development, where I practice and
 - Send the confirmation messge to user
 - Car wash features
 - Show the alert if car is not in queue
-- User prfile section >> Edit/update the profile 
+- User prfile section 
+    - Edit/update the profile  
     - See the bookings 
