@@ -1,10 +1,14 @@
-function App() {
+import { Home } from "./Components/pages";
+import {NavBar,Footer} from "./Components/layouts";
 
+function App() {
   return (
     <>
-     <p className="text-green-500 text-4xl">Sample</p>
+    <NavBar/>
+      <Home />
+      <Footer/>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

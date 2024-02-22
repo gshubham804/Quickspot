@@ -1,6 +1,6 @@
 # QuickSpot
 
-It is a comprehensive exploration of fullstack development, where I practice and learn by doing building APIs, crafting middleware, defining routes, and understanding numerous other enlightening concepts.
+It is a comprehensive exploration of fullstack development, where I practice and learn by doing building APIs, crafting middleware, defining routes, UI, managing state and understanding numerous other enlightening concepts.
 
 It have both perspective i.e. user and admin panel.
 
@@ -15,23 +15,25 @@ It have both perspective i.e. user and admin panel.
 
 ## Features
 
+**User**
+
 - Authentication
 
-   - Login
-   - Register
-   - Send OTP
-   - Verify OTP
-   - Send Email
-   - Forgot password
-   - Reset password
+  - Login
+  - Register
+  - Send OTP
+  - Verify OTP
+  - Send Email
+  - Forgot password
+  - Reset password
 
 - Search the parking zone with pincode and name of parking zone
 - Show the availability of slot in parking zone
 - Time ended for parking and car wash done
-- Book the slot 
+- Book the slot
 - Send the confirmation messge to user
 - Car wash features
 - Show the alert if car is not in queue
-- User prfile section 
-    - Edit/update the profile  
-    - See the bookings 
+- User prfile section
+  - Edit/update the profile
+  - See the bookings
