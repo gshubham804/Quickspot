@@ -1,10 +1,16 @@
+import Carousel from "../Carousel";
 import FilterTags from "../FilterTags";
 import ProductCard from "../ProductCard";
 import Search from "../Search";
+import {
+  carImagesForHomePageSlider,
+  carImagesForProductCards,
+} from "../data/images";
 
 const Home = () => {
   return (
     <>
+      <Carousel images={carImagesForHomePageSlider} />
       <div className="p-6">
         {/* search component */}
         <Search />
@@ -15,8 +21,8 @@ const Home = () => {
           Recommended
         </div>
         <div className="flex flex-row items-center justify-center">
-          {[...Array(4)].map((_, index) => (
-            <ProductCard key={index} />
+          {carImagesForProductCards.map((el, index) => (
+            <ProductCard key={index} images={el} />
           ))}
         </div>
         {/* Popular parking zone */}
@@ -24,8 +30,8 @@ const Home = () => {
           Popular parking zone
         </div>
         <div className="flex flex-row items-center">
-          {[...Array(4)].map((_, index) => (
-            <ProductCard key={index} />
+          {carImagesForProductCards.map((el, index) => (
+            <ProductCard key={index} images={el} />
           ))}
         </div>
       </div>

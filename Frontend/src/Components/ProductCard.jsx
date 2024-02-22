@@ -1,10 +1,11 @@
-const ProductCard = () => {
+const ProductCard = ({ images }) => {
+  console.log(images);
   return (
     <div className="mr-6 mb-6 w-full max-w-md bg-white border border-red-500 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
       <a href="#">
         <img
           className="p-4 rounded-t-lg"
-          src="https://media.istockphoto.com/id/1397252319/photo/red-car-paked-in-underground-garage-with-lots-of-vehicles.jpg?s=1024x1024&w=is&k=20&c=yCyofxBILzrVEMeRqjSYHksTq_mdtFEjTLX92VntHhc="
+          src={images?.img}
           alt="product image"
         />
       </a>

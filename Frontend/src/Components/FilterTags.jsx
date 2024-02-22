@@ -3,8 +3,8 @@ import { useState } from "react";
 const FilterTags = () => {
   const filters = [
     "All",
-    "Nearest by me",
     "Car wash",
+    "Near me",
     "Near metro station",
     "Near hospitals",
     "Near bus stand",
