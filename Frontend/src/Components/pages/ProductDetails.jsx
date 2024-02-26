@@ -49,7 +49,7 @@ const ProductDetails = () => {
             </span>
           </div>
         </div>
-        <p className="max-w-4xl text-gray-700 dark:text-gray-300 leading-relaxed">
+        <p className="text-justify max-w-4xl text-gray-700 dark:text-gray-300 leading-relaxed">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum autem
           odio dolorum corporis ducimus! Expedita, eos sint dolor iste dolores
           reiciendis ab quasi necessitatibus perspiciatis cum amet quisquam
@@ -58,8 +58,8 @@ const ProductDetails = () => {
         <h1 className="mt-8 mb-4 text-3xl font-semibold leading-tight">
           Owner
         </h1>
-        <div className="flex justify-between items-center">
-          <div>
+        <div className="flex flex-wrap justify-between items-center">
+          <div className="mb-6 md:mb-0 lg:mb-0">
             <div className="flex items-center gap-4">
               <img
                 className="w-16 h-16 rounded-full"
@@ -84,13 +84,16 @@ const ProductDetails = () => {
             </div>
           </div>
         </div>
-        <h1 className="mt-8 mb-4 text-xl font-semibold leading-tight">
+        <h1 className="mt-12 mb-4 text-xl font-semibold leading-tight">
           Nearest
         </h1>
-        <div className="flex space-x-4 mt-4">
+        <div className="flex flex-wrap gap-4 mt-4 mb-16">
           {nearestOptions.map((option, index) => (
-            <div key={index}>
-              <div className="flex items-center justify-center w-36 h-10 rounded-md bg-red-200">
+            <div key={index} className="flex items-center">
+              <div
+                className="px-4 flex items-center justify-center w-full h-10 
+              rounded-md bg-red-200"
+              >
                 {option?.icon}
                 <span className="ml-2">{option.label}</span>
               </div>

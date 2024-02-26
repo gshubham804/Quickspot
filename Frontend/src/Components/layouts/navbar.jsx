@@ -1,7 +1,9 @@
 import { List } from "phosphor-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [showOptions, setShowOptions] = useState(false);
 
   const toggleOptions = () => {
@@ -20,26 +22,44 @@ const Navbar = () => {
           <div className="w-2/5 text-center absolute right-0 top-12 bg-white shadow-md p-4 z-10">
             {/* List options for mobile */}
             <ul className="font-medium">
-              <li className="cursor-pointer hover:text-red-500 hover:underline mb-2">
+              <li
+                className="cursor-pointer hover:text-red-500 hover:underline mb-2"
+                onClick={() => navigate("/")}
+              >
                 Home
               </li>
-              <li className="cursor-pointer hover:text-red-500 hover:underline mb-2">
+              <li
+                className="cursor-pointer hover:text-red-500 hover:underline mb-2"
+                onClick={() => navigate("services")}
+              >
                 Services
               </li>
-              <li className="cursor-pointer hover:text-red-500 hover:underline mb-2">
+              <li
+                className="cursor-pointer hover:text-red-500 hover:underline mb-2"
+                onClick={() => navigate("aboutus")}
+              >
                 About us
               </li>
-              <li className="cursor-pointer hover:text-red-500 hover:underline">
+              <li
+                className="cursor-pointer hover:text-red-500 hover:underline"
+                onClick={() => navigate("contactus")}
+              >
                 Contact us
               </li>
             </ul>
 
             {/* Buttons for mobile */}
             <div className="flex flex-col mt-4">
-              <button className="text-red-500 bg-white px-4 py-2 rounded-md border-2 border-red-400 hover:bg-red-100 focus:outline-none focus:ring focus:border-red-300 mb-2">
+              <button
+                className="text-red-500 bg-white px-4 py-2 rounded-md border-2 border-red-400 hover:bg-red-100 focus:outline-none focus:ring focus:border-red-300 mb-2"
+                onClick={() => navigate("login")}
+              >
                 Login
               </button>
-              <button className="text-white bg-red-500 px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:border-red-300">
+              <button
+                className="text-white bg-red-500 px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:border-red-300"
+                onClick={() => navigate("signup")}
+              >
                 Signup
               </button>
             </div>
@@ -57,24 +77,42 @@ const Navbar = () => {
 
         <div className="flex flex-col md:flex-row items-center">
           <ul className="font-medium flex flex-col md:flex-row md:mr-8">
-            <li className="cursor-pointer hover:text-red-500 hover:underline hover:underline-offset-4 mb-2 md:mb-0 md:mr-8">
+            <li
+              className="cursor-pointer hover:text-red-500 hover:underline hover:underline-offset-4 mb-2 md:mb-0 md:mr-8"
+              onClick={() => navigate("/")}
+            >
               Home
             </li>
-            <li className="cursor-pointer hover:text-red-500 hover:underline hover:underline-offset-4 mb-2 md:mb-0 md:mr-8">
+            <li
+              className="cursor-pointer hover:text-red-500 hover:underline hover:underline-offset-4 mb-2 md:mb-0 md:mr-8"
+              onClick={() => navigate("services")}
+            >
               Services
             </li>
-            <li className="cursor-pointer hover:text-red-500 hover:underline hover:underline-offset-4 mb-2 md:mb-0 md:mr-8">
+            <li
+              className="cursor-pointer hover:text-red-500 hover:underline hover:underline-offset-4 mb-2 md:mb-0 md:mr-8"
+              onClick={() => navigate("aboutus")}
+            >
               About us
             </li>
-            <li className="cursor-pointer hover:text-red-500 hover:underline hover:underline-offset-4 mb-2 md:mb-0">
+            <li
+              className="cursor-pointer hover:text-red-500 hover:underline hover:underline-offset-4 mb-2 md:mb-0"
+              onClick={() => navigate("contactus")}
+            >
               Contact us
             </li>
           </ul>
           <div className="flex flex-row mt-4 md:mt-0">
-            <button className="text-white bg-red-500 px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:border-red-300 mb-2 md:mb-0 md:mr-2">
+            <button
+              className="text-white bg-red-500 px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:border-red-300 mb-2 md:mb-0 md:mr-2"
+              onClick={() => navigate("login")}
+            >
               Login
             </button>
-            <button className="text-red-500 bg-white px-4 py-2 rounded-md border-2 border-red-400 hover:bg-red-100 focus:outline-none focus:ring focus:border-red-300">
+            <button
+              className="text-red-500 bg-white px-4 py-2 rounded-md border-2 border-red-400 hover:bg-red-100 focus:outline-none focus:ring focus:border-red-300"
+              onClick={() => navigate("signup")}
+            >
               Signup
             </button>
           </div>

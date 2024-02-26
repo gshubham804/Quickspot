@@ -11,25 +11,26 @@ const Home = () => {
   return (
     <>
       <Carousel images={carImagesForHomePageSlider} />
-      <div className="p-6">
+      <div>
         {/* search component */}
         <Search />
         {/* Filter tags */}
         <FilterTags />
         {/* Product cards  */}
-        <div className="text-black font-bold text-2xl mb-4 mt-6">
+        <div className="px-6 text-black font-bold text-2xl mb-4 mt-6">
           Recommended
         </div>
-        <div className="flex flex-row items-center justify-center">
+        <div className="flex flex-wrap items-center justify-center">
           {carImagesForProductCards.map((el, index) => (
             <ProductCard key={index} images={el} />
           ))}
         </div>
+
         {/* Popular parking zone */}
-        <div className="text-black font-bold text-2xl mb-4 mt-6">
+        <div className="px-6 text-black font-bold text-2xl mb-4 mt-6">
           Popular parking zone
         </div>
-        <div className="flex flex-row items-center">
+        <div className="flex flex-wrap items-center justify-center">
           {carImagesForProductCards.map((el, index) => (
             <ProductCard key={index} images={el} />
           ))}
