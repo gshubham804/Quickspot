@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+
 const ProductCard = ({ images }) => {
   return (
     <div
@@ -5,19 +7,19 @@ const ProductCard = ({ images }) => {
      bg-white border border-red-500 rounded-lg shadow-md
       dark:bg-gray-800 dark:border-gray-700"
     >
-      <a href="productdetails">
+      <Link to="productdetails">
         <img
           className="w-full h-44 md:h-64 object-cover rounded-t-lg"
           src={images?.img}
           alt="product image"
         />
-      </a>
+      </Link>
       <div className="p-4 md:p-5">
-        <a href="productdetails">
+        <Link to="productdetails">
           <h5 className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
             Zone A parking, New Delhi
           </h5>
-        </a>
+        </Link>
         <div className="flex items-center mt-2.5 mb-3 md:mb-5">
           <div className="flex items-center space-x-1 rtl:space-x-reverse">
             {[...Array(4)].map((_, index) => (
@@ -50,12 +52,11 @@ const ProductCard = ({ images }) => {
           <span className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">
             ₹599
           </span>
-          <a
-            href="productdetails"
+          <Link to="productdetails"
             className="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 md:px-5 py-2 text-center mt-2 md:mt-0 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
           >
             Book
-          </a>
+          </Link>
         </div>
       </div>
     </div>
