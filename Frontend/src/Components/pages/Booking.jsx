@@ -21,9 +21,15 @@ const Booking = () => {
       </div>
 
       {/* Main container */}
-      <div className="flex justify-between">
+      <div
+        className="flex flex-col md:flex-row lg:flex-row justify-center md:justify-between
+      lg:justify-between"
+      >
         {/* First Subcontainer */}
-        <div className="rounded-md h-max py-8 border-red-300 px-4 flex flex-col border-2 mr-8">
+        <div
+          className="rounded-md h-max py-8 border-red-300 px-4 flex flex-col border-2
+        mr-0 md:mr-8 lg:mr-8 mb-8 md:mb-0 lg:mb-0"
+        >
           <div className="w-32">
             <DatePickerUtility />
             {/* Add your date picker component here */}
@@ -41,7 +47,7 @@ const Booking = () => {
         </div>
 
         {/* Second subContainer */}
-        <div className="col-span-2 grid grid-cols-3 gap-9">
+        <div className="col-span-2 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-9">
           {[...Array(5)].map((_, cardIndex) => (
             <>
               <div
