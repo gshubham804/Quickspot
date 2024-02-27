@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.react-ios-time-picker {
+  margin-left: 15% !important;
+  margin-bottom: 15% !important;
+}
+
+.react-ios-time-picker-btn-container {
+  background-color: #ef4444 !important;
+  border-bottom: 1px solid #ef4444 !important;
+}
+
+.react-ios-time-picker-btn {
+  color: white !important;
+}
+
+.react-ios-time-picker-selected-overlay {
+  background-color: #ec7d7d !important;
+}
+
+.react-ios-time-picker-cell-inner-hour:hover {
+  background-color: #ec7d7d !important;
+}
+
+.react-ios-time-picker-cell-inner-minute:hover {
+  background-color: #ec7d7d !important;
+}
+
+.react-ios-time-picker-container {
+  background-color: white !important;
+}

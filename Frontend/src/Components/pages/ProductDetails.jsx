@@ -9,6 +9,7 @@ import {
   Truck,
 } from "phosphor-react";
 import { carImagesForProductDetails } from "../data/images";
+import { useNavigate } from "react-router-dom";
 
 const nearestOptions = [
   { icon: <FirstAid />, label: "Hospital" },
@@ -20,6 +21,7 @@ const nearestOptions = [
 ];
 
 const ProductDetails = () => {
+  const navigate = useNavigate();
   return (
     <>
       <Carousel images={carImagesForProductDetails} />
@@ -28,7 +30,10 @@ const ProductDetails = () => {
           <h1 className="text-3xl font-semibold leading-tight">
             About Zone A Parking Zone
           </h1>
-          <button className="text-white bg-red-500 px-8 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:border-red-300 mb-2 md:mb-0 md:mr-2">
+          <button
+            className="text-white bg-red-500 px-8 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:border-red-300 mb-2 md:mb-0 md:mr-2"
+            onClick={() => navigate("booking")}
+          >
             Book
           </button>
         </div>

@@ -6,6 +6,7 @@ import Contact from "./Components/pages/Contact";
 import Login from "./Components/pages/Login";
 import Signup from "./Components/pages/Signup";
 import Services from "./Components/pages/Services";
+import Booking from "./Components/pages/Booking";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
           <Route path="services" element={<Services />} />
+          <Route path="booking" element={<Booking />} />
         </Route>
         <Route path="*" element={<Page404 />}/>
       </Routes>
