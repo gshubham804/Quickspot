@@ -16,6 +16,11 @@ const prdouctDataSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  nearest: [
+    {
+      type: String,
+    },
+  ],
   images: [
     {
       type: String,
