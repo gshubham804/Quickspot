@@ -28,7 +28,7 @@ export const register = async (req, res, next) => {
         password, // Make sure to hash the password before saving it to the database
       });
 
-      return res.status(201).json({
+      return res.status(200).json({
         status: "success",
         message: "User registered successfully.",
         data: newUser,
