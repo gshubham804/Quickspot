@@ -1,14 +1,25 @@
 import { List } from "phosphor-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "../redux/authSlice";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [showOptions, setShowOptions] = useState(false);
+  const { isLoggedIn } = useSelector((state) => state?.authentication);
+
 
   const toggleOptions = () => {
     setShowOptions(!showOptions);
   };
+
+  const handleSignup=()=>{
+    dispatch(logoutUser());
+    navigate("signup")
+  }
+
   return (
     <>
       {/*  mobile view */}
@@ -50,22 +61,26 @@ const Navbar = () => {
 
             {/* Buttons for mobile */}
             <div className="flex flex-col mt-4">
+              {!isLoggedIn ?
+               <button
+               className="text-red-500 bg-white px-4 py-2 rounded-md border-2 border-red-400 hover:bg-red-100 focus:outline-none focus:ring focus:border-red-300 mb-2"
+               onClick={() => navigate("login")}
+             >
+               Login
+             </button>
+              :
               <button
-                className="text-red-500 bg-white px-4 py-2 rounded-md border-2 border-red-400 hover:bg-red-100 focus:outline-none focus:ring focus:border-red-300 mb-2"
-                onClick={() => navigate("login")}
-              >
-                Login
-              </button>
-              <button
-                className="text-white bg-red-500 px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:border-red-300"
-                onClick={() => navigate("signup")}
-              >
-                Signup
-              </button>
+              className="text-white bg-red-500 px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:border-red-300"
+              onClick={() => handleSignup}
+            >
+              Signup
+            </button>
+              }
             </div>
           </div>
         )}
       </div>
+
       {/*  desktop view */}
       <div className="sm:hidden xs:hidden shadow-md px-4 md:px-8 py-2 md:py-4 md:flex flex-col md:flex-row justify-between items-center">
         <div className="cursor-pointer text-3xl font-bold mb-4 md:mb-0">
@@ -103,18 +118,21 @@ const Navbar = () => {
             </li>
           </ul>
           <div className="flex flex-row mt-4 md:mt-0">
-            <button
-              className="text-white bg-red-500 px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring-red-600 focus:border-red-300 mb-2 md:mb-0 md:mr-2"
-              onClick={() => navigate("login")}
-            >
-              Login
-            </button>
-            <button
-              className="text-red-500 bg-white px-4 py-2 rounded-md border-2 border-red-400 hover:bg-red-100 focus:outline-none focus:ring-red-300 focus:border-red-300"
-              onClick={() => navigate("signup")}
-            >
-              Signup
-            </button>
+            {!isLoggedIn ? (
+              <button
+                className="text-white bg-red-500 px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring-red-600 focus:border-red-300 mb-2 md:mb-0 md:mr-2"
+                onClick={() => navigate("login")}
+              >
+                Login
+              </button>
+            ) : (
+              <button
+                className="text-red-500 bg-white px-4 py-2 rounded-md border-2 border-red-400 hover:bg-red-100 focus:outline-none focus:ring-red-300 focus:border-red-300"
+                onClick={() => handleSignup()}
+              >
+                Signup
+              </button>
+            )}
           </div>
         </div>
       </div>

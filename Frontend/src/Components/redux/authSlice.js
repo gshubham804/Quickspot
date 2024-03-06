@@ -22,6 +22,7 @@ const authSlice = createSlice({
     signOut(state) {
       state.isLoggedIn = false;
       state.token = "";
+      state.user_id = null;
     },
     updateRegisterEmail(state, action) {
       state.email = action.payload.email;
@@ -95,5 +96,12 @@ export function registerUser(formValues) {
         console.log(error);
         dispatch(authSlice.actions.updateIsLoading({ error: true }));
       });
+  };
+}
+
+export function logoutUser() {
+  return async (dispatch) => {
+    window.localStorage.removeItem("user_id");
+    dispatch(authSlice.actions.signOut());
   };
 }
