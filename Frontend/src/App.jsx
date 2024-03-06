@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Layout from "./Components/layouts/mainLayout";
 import { Home, Page404, ProductDetails } from "./Components/pages";
 import About from "./Components/pages/About";
@@ -9,9 +9,10 @@ import Services from "./Components/pages/Services";
 import Booking from "./Components/pages/Booking";
 import ProductDataForm from "./Components/pages/ProductDataForm";
 import { Provider } from "react-redux";
-import store from './Components/redux/store';
+import store from "./Components/redux/store";
 
 function App() {
+
   return (
     <Provider store={store}>
       <Router>

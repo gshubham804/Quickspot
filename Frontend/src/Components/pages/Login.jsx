@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { LoginUser } from "../redux/authSlice";
 
@@ -10,31 +10,42 @@ const Login = () => {
   });
   const [error, setError] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleLogin = (field, value) => {
-    setFormValues((prevData) => ({
-      ...prevData,
-      [field]: value,
-    }));
-
+  const validateForm = () => {
     // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formValues.email)) {
       setError("Invalid email address");
-      return;
+      return false;
     }
 
     // Basic password validation
     if (formValues.password.length < 6) {
       setError("Password must be at least 6 characters");
-      return;
+      return false;
     }
-    try {
-      dispatch(LoginUser(formValues));
-    } catch (error) {
-      console.log(error);
-    }
+
     setError("");
+    return true;
+  };
+
+  const handleLoginClick = () => {
+    if (validateForm()) {
+      try {
+        dispatch(LoginUser(formValues));
+        navigate("/");
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const handleInputChange = (field, value) => {
+    setFormValues((prevData) => ({
+      ...prevData,
+      [field]: value,
+    }));
   };
 
   return (
@@ -63,7 +74,7 @@ const Login = () => {
             className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-red-500"
             placeholder="john.doe@example.com"
             value={formValues?.email}
-            onChange={(e) => handleLogin("email",e.target.value)}
+            onChange={(e) => handleInputChange("email", e.target.value)}
           />
         </div>
 
@@ -80,13 +91,13 @@ const Login = () => {
             className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-red-500"
             placeholder="********"
             value={formValues?.password}
-            onChange={(e) => handleLogin("password",e.target.value)}
+            onChange={(e) => handleInputChange("password", e.target.value)}
           />
         </div>
 
         <button
           className="w-full bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none"
-          onClick={handleLogin}
+          onClick={handleLoginClick}
         >
           Login
         </button>

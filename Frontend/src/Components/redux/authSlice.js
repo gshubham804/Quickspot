@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import axiosInstance from "../utils/axios";
+import axiosInstance from "../utils/axios";
 
 const initialState = {
   isLoggedIn: false,
@@ -17,6 +17,7 @@ const authSlice = createSlice({
     logIn(state, action) {
       state.isLoggedIn = action.payload.isLoggedIn;
       state.token = action.payload.token;
+      state.user_id = action.payload.user_id;
     },
     signOut(state) {
       state.isLoggedIn = false;
@@ -24,6 +25,9 @@ const authSlice = createSlice({
     },
     updateRegisterEmail(state, action) {
       state.email = action.payload.email;
+    },
+    updateIsLoading(state, action) {
+      state.error = action.payload.error;
     },
   },
 });
@@ -34,34 +38,34 @@ export default authSlice.reducer;
 
 export function LoginUser(formValues) {
   // formValues >> {email,password}
-  console.log(formValues);
-  // return async (dispatch) => {
-  //   await axiosInstance
-  //     .post(
-  //       "/auth/login",
-  //       {
-  //         ...formValues,
-  //       },
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       }
-  //     )
-  //     .then(function (response) {
-  //       console.log(response);
-  //       dispatch(
-  //         authSlice.actions.logIn({
-  //           isLoggedIn: true,
-  //           token: response?.data?.token,
-  //         })
-  //       );
-  //       window.localStorage.setItem("user_id", response.data.user_id);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // };
+  return async (dispatch) => {
+    await axiosInstance
+      .post(
+        "/auth/login",
+        {
+          ...formValues,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then(function (response) {
+        dispatch(
+          authSlice.actions.logIn({
+            isLoggedIn: true,
+            token: response?.data?.token,
+            user_id: response?.data?.user_id,
+          })
+        );
+        window.localStorage.setItem("user_id", response.data.user_id);
+      })
+      .catch(function (error) {
+        console.log(error);
+        dispatch(authSlice.actions.updateIsLoading({ error: true }));
+      });
+  };
 }
 
 // export function registerUser(formValues) {

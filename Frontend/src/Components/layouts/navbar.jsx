@@ -104,13 +104,13 @@ const Navbar = () => {
           </ul>
           <div className="flex flex-row mt-4 md:mt-0">
             <button
-              className="text-white bg-red-500 px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:border-red-300 mb-2 md:mb-0 md:mr-2"
+              className="text-white bg-red-500 px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring-red-600 focus:border-red-300 mb-2 md:mb-0 md:mr-2"
               onClick={() => navigate("login")}
             >
               Login
             </button>
             <button
-              className="text-red-500 bg-white px-4 py-2 rounded-md border-2 border-red-400 hover:bg-red-100 focus:outline-none focus:ring focus:border-red-300"
+              className="text-red-500 bg-white px-4 py-2 rounded-md border-2 border-red-400 hover:bg-red-100 focus:outline-none focus:ring-red-300 focus:border-red-300"
               onClick={() => navigate("signup")}
             >
               Signup

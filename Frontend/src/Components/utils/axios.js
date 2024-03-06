@@ -1,15 +1,13 @@
-// import axios from "axios";
+import axios from "axios";
 
-// // Create an instance of axios
+// Create an instance of axios
+const axiosInstance = axios.create({ baseURL:import.meta.env.VITE_BASE_URL});
 
-// // eslint-disable-next-line no-undef
-// const axiosInstance = axios.create({ baseURL:process.env.REACT_APP_BASE_URL});
+// Create an interceptors which can handle response and error
 
-// // Create an interceptors which can handle response and error
+axios.interceptors.response.use(
+  (response) => response,
+  (error) => Promise.reject((error.response && error.response.data) || "Something went wrong")
+);
 
-// axios.interceptors.response.use(
-//   (response) => response,
-//   (error) => Promise.reject((error.response && error.response.data) || "Something went wrong")
-// );
-
-// export default axiosInstance;
+export default axiosInstance;

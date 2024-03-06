@@ -10,6 +10,7 @@ import {
 } from "phosphor-react";
 import { carImagesForProductDetails } from "../data/images";
 import { Outlet, useNavigate } from "react-router-dom";
+import ProtectedRoute from "../ProtectedRoute";
 
 const nearestOptions = [
   { icon: <FirstAid />, label: "Hospital" },
@@ -22,8 +23,9 @@ const nearestOptions = [
 
 const ProductDetails = () => {
   const navigate = useNavigate();
+
   return (
-    <>
+    <ProtectedRoute>
       <Carousel images={carImagesForProductDetails} />
       <div className="mt-8 px-12 bg-white dark:bg-gray-800 rounded-lg">
         <div className="mt-6 flex justify-between items-center">
@@ -109,7 +111,7 @@ const ProductDetails = () => {
         </div>
       </div>
       <Outlet />
-    </>
+    </ProtectedRoute>
   );
 };
 
