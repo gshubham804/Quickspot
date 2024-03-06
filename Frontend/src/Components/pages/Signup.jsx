@@ -1,44 +1,65 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { registerUser } from "../redux/authSlice";
 
 const Signup = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [formValues, setFormValues] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const handleSignup = () => {
+  const validateForm = () => {
     // Basic username validation
-    if (username.trim() === "") {
+    if (formValues.username.trim() === "") {
       setError("Username cannot be empty");
       return;
     }
 
     // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!emailRegex.test(formValues.email)) {
       setError("Invalid email address");
       return;
     }
 
     // Basic password validation
-    if (password.length < 6) {
+    if (formValues.password.length < 6) {
       setError("Password must be at least 6 characters");
       return;
     }
 
     // Confirm password validation
-    if (password !== confirmPassword) {
+    if (formValues.password !== formValues.confirmPassword) {
       setError("Passwords do not match");
       return;
     }
 
-    // Your signup logic here (e.g., send signup request to the server)
-    // If successful, you can redirect or perform other actions
-
-    // Reset error state
     setError("");
+    return true;
+  };
+
+  const handleSignupClick = () => {
+    if (validateForm()) {
+      try {
+        dispatch(registerUser(formValues));
+        navigate("/");
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const handleInputChange = (field, value) => {
+    setFormValues((prevData) => ({
+      ...prevData,
+      [field]: value,
+    }));
   };
 
   return (
@@ -66,8 +87,8 @@ const Signup = () => {
             id="username"
             className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-red-500"
             placeholder="john_doe"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={formValues.username}
+            onChange={(e) => handleInputChange("username",e.target.value)}
           />
         </div>
 
@@ -83,8 +104,8 @@ const Signup = () => {
             id="email"
             className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-red-500"
             placeholder="john.doe@example.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={formValues.email}
+            onChange={(e) => handleInputChange("email",e.target.value)}
           />
         </div>
 
@@ -100,8 +121,8 @@ const Signup = () => {
             id="password"
             className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-red-500"
             placeholder="********"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={formValues.password}
+            onChange={(e) => handleInputChange("password",e.target.value)}
           />
         </div>
 
@@ -117,14 +138,14 @@ const Signup = () => {
             id="confirmPassword"
             className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-red-500"
             placeholder="********"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            value={formValues.confirmPassword}
+            onChange={(e) => handleInputChange("confirmPassword",e.target.value)}
           />
         </div>
 
         <button
           className="w-full bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none"
-          onClick={handleSignup}
+          onClick={handleSignupClick}
         >
           Sign Up
         </button>

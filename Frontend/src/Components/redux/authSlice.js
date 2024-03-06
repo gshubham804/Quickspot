@@ -68,36 +68,32 @@ export function LoginUser(formValues) {
   };
 }
 
-// export function registerUser(formValues) {
-//   return async (dispatch, getState) => {
-//     dispatch(authSlice.actions.updateIsLoading({ error: false }));
-//     await axiosInstance
-//       .post(
-//         "/auth/register",
-//         {
-//           ...formValues,
-//         },
-//         {
-//           headers: {
-//             "Content-Type": "application/json",
-//           },
-//         }
-//       )
-//       .then((response) => {
-//         console.log(response);
-//         dispatch(
-//           authSlice.actions.updateRegisterEmail({ email: formValues.email })
-//         );
-//         dispatch(authSlice.actions.updateIsLoading({ error: false }));
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//         dispatch(authSlice.actions.updateIsLoading({ error: true }));
-//       })
-//       .finally(() => {
-//         if (!getState().auth.error) {
-//           window.location.href = "/";
-//         }
-//       });
-//   };
-// }
+export function registerUser(formValues) {
+  return async (dispatch) => {
+    dispatch(authSlice.actions.updateIsLoading({ error: false }));
+    await axiosInstance
+      .post(
+        "/auth/register",
+        {
+          fullName: formValues?.username,
+          email: formValues?.email,
+          password: formValues?.password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        dispatch(
+          authSlice.actions.updateRegisterEmail({ email: formValues.email })
+        );
+        dispatch(authSlice.actions.updateIsLoading({ error: false }));
+      })
+      .catch((error) => {
+        console.log(error);
+        dispatch(authSlice.actions.updateIsLoading({ error: true }));
+      });
+  };
+}
