@@ -7,7 +7,7 @@ const Search = () => {
       >
         Search
       </label>
-      <div className="relative">
+      <div className="relative border-[1px] border-red-400 rounded-md">
         <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
           <svg
             className="w-4 h-4 text-red-500 dark:text-gray-400"

@@ -1,29 +1,39 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { LoginUser } from "../redux/authSlice";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formValues, setFormValues] = useState({
+    email: "",
+    password: "",
+  });
   const [error, setError] = useState("");
+  const dispatch = useDispatch();
 
-  const handleLogin = () => {
+  const handleLogin = (field, value) => {
+    setFormValues((prevData) => ({
+      ...prevData,
+      [field]: value,
+    }));
+
     // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!emailRegex.test(formValues.email)) {
       setError("Invalid email address");
       return;
     }
 
     // Basic password validation
-    if (password.length < 6) {
+    if (formValues.password.length < 6) {
       setError("Password must be at least 6 characters");
       return;
     }
-
-    // Your login logic here (e.g., send login request to the server)
-    // If successful, you can redirect or perform other actions
-
-    // Reset error state
+    try {
+      dispatch(LoginUser(formValues));
+    } catch (error) {
+      console.log(error);
+    }
     setError("");
   };
 
@@ -52,8 +62,8 @@ const Login = () => {
             id="email"
             className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-red-500"
             placeholder="john.doe@example.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={formValues?.email}
+            onChange={(e) => handleLogin("email",e.target.value)}
           />
         </div>
 
@@ -69,8 +79,8 @@ const Login = () => {
             id="password"
             className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-red-500"
             placeholder="********"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={formValues?.password}
+            onChange={(e) => handleLogin("password",e.target.value)}
           />
         </div>
 
