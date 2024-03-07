@@ -48,7 +48,7 @@ const Signup = () => {
     if (validateForm()) {
       try {
         dispatch(registerUser(formValues));
-        navigate("/");
+        navigate("/login");
       } catch (error) {
         console.log(error);
       }
