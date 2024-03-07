@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const prdouctDataSchema = new mongoose.Schema({
+const productDataSchema = new mongoose.Schema({
   ownerFullName: {
     type: String,
     required: true,
@@ -48,5 +48,5 @@ const prdouctDataSchema = new mongoose.Schema({
   },
 });
 
-const prdouctData = new mongoose.model("ProductData", prdouctDataSchema);
-export default prdouctData;
+const productData = new mongoose.model("ProductData", productDataSchema);
+export default productData;
