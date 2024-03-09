@@ -73,15 +73,6 @@ export const filteredData = async (req, res, next) => {
   try {
     const { pincode, companyName } = req.query;
 
-    // Basic input validation
-    if (pincode && isNaN(pincode)) {
-      return res.status(400).json({ error: 'Invalid pincode format' });
-    }
-
-    if (companyName && typeof companyName !== 'string') {
-      return res.status(400).json({ error: 'Invalid companyName format' });
-    }
-
     // Build the search query
     const searchQuery = buildSearchQuery(pincode, companyName);
 
