@@ -22,7 +22,6 @@ const productSlice = createSlice({
 export default productSlice.reducer;
 
 export const filteredData = (formValues) => {
-  console.log(formValues);
   const { companyName, pincode } = formValues;
   return async (dispatch) => {
     await axiosInstance

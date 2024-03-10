@@ -24,7 +24,7 @@ const Search = () => {
     );
 
     if (!hasValue) {
-      console.error("At least one property should contain a value");
+      // console.error("At least one property should contain a value");
       return false;
     }
 
@@ -33,22 +33,22 @@ const Search = () => {
       // Validate pincode as a number
       const pincodeValue = parseFloat(formValues.pincode);
       if (isNaN(pincodeValue) || !Number.isInteger(pincodeValue)) {
-        console.error("Pincode should be a valid number");
+        // console.error("Pincode should be a valid number");
         return false;
       }
     }
 
     if (formValues.companyName) {
       // Validate companyName as a string
-      const companyNameRegex = /^[A-Za-z]+$/;
+      const companyNameRegex = /^[A-Za-z\s]+$/;
       if (!companyNameRegex.test(formValues.companyName)) {
-        console.error("Company Name should be a valid string");
+        // console.error("Company Name should be a valid string");
         return false;
       }
     }
 
     // Continue with form submission or other logic
-    console.log("Form is valid");
+    // console.log("Form is valid");
     return true;
   };
 

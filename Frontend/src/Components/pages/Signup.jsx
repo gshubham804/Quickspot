@@ -45,14 +45,8 @@ const Signup = () => {
   };
 
   const handleSignupClick = () => {
-    if (validateForm()) {
-      try {
+    if (validateForm())
         dispatch(registerUser(formValues));
-        navigate("/login");
-      } catch (error) {
-        console.log(error);
-      }
-    }
   };
 
   const handleInputChange = (field, value) => {

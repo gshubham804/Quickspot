@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axiosInstance from "../utils/axios";
+import { hideAlert, showAlert } from "./alertSlice";
 
 const initialState = {
   isLoggedIn: false,
@@ -39,7 +40,7 @@ export default authSlice.reducer;
 
 export function LoginUser(formValues) {
   // formValues >> {email,password}
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     await axiosInstance
       .post(
         "/auth/login",
@@ -60,17 +61,37 @@ export function LoginUser(formValues) {
             user_id: response?.data?.user_id,
           })
         );
+        dispatch(
+          showAlert({ type: "success", message: "Login successfully." })
+        );
         window.localStorage.setItem("user_id", response.data.user_id);
+        dispatch(authSlice.actions.updateIsLoading({ error: false }));
       })
       .catch(function (error) {
         console.log(error);
         dispatch(authSlice.actions.updateIsLoading({ error: true }));
+        dispatch(
+          showAlert({
+            type: "error",
+            message: "Login failed. Please try again.",
+          })
+        );
+        setTimeout(() => {
+          dispatch(hideAlert());
+        }, 3000);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          if (!getState().authentication.error) {
+            window.location.href = "/";
+          }
+        }, 1000);
       });
   };
 }
 
 export function registerUser(formValues) {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     dispatch(authSlice.actions.updateIsLoading({ error: false }));
     await axiosInstance
       .post(
@@ -94,7 +115,18 @@ export function registerUser(formValues) {
       })
       .catch((error) => {
         console.log(error);
+        dispatch(
+          showAlert({
+            type: "error",
+            message: "Login failed. Please try again.",
+          })
+        );
         dispatch(authSlice.actions.updateIsLoading({ error: true }));
+      })
+      .finally(() => {
+        if (!getState().authentication.error) {
+          window.location.href = "/login";
+        }
       });
   };
 }
