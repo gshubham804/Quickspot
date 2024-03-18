@@ -22,6 +22,25 @@ export const getProductData = async (req, res, next) => {
   }
 };
 
+// To get particular product details
+export const getProductDetailsData = async (req, res, next) => {
+  const {id} = req.query;
+  try {
+    // Select only the desired fields
+    const productData = await ProductData.findById(id);
+    return res.status(200).json({
+      status: "success",
+      data: productData,
+    });
+  } catch (error) {
+    console.error("Error fetching product data:", error);
+    return res.status(500).json({
+      status: "error",
+      message: "Internal Server Error",
+    });
+  }
+};
+
 // To save the data of companies
 
 export const postProductData = async (req, res, next) => {
@@ -37,9 +56,16 @@ export const postProductData = async (req, res, next) => {
     location,
     city,
     pincode,
+    numberOfZones,
+    numberOfSlotsEachZone,
   } = req.body;
 
   try {
+    const zones = Array.from({ length: numberOfZones }, (_, zoneIndex) => ({
+      name: `Zone${zoneIndex}`,
+      slots: Array.from({ length: numberOfSlotsEachZone }, () => ({ value: false })),
+    }));
+
     const newProductData = await ProductData.create({
       ownerFullName,
       ownerAvatar,
@@ -52,6 +78,9 @@ export const postProductData = async (req, res, next) => {
       location,
       city,
       pincode,
+      numberOfZones,
+      numberOfSlotsEachZone,
+      zones,
     });
 
     return res.status(201).json({
@@ -66,6 +95,7 @@ export const postProductData = async (req, res, next) => {
     });
   }
 };
+
 
 // To get the data of companies on the basis of provided query
 

@@ -4,7 +4,6 @@ import ProductCard from "../ProductCard";
 import Search from "../Search";
 import {
   carImagesForHomePageSlider,
-  carImagesForProductCards,
 } from "../data/images";
 
 const Home = () => {
@@ -21,9 +20,7 @@ const Home = () => {
           Recommended
         </div>
         <div className="flex flex-wrap items-center justify-center">
-          {carImagesForProductCards.map((el, index) => (
-            <ProductCard key={index} images={el} />
-          ))}
+            <ProductCard />
         </div>
 
         {/* Popular parking zone */}
@@ -31,9 +28,7 @@ const Home = () => {
           Popular parking zone
         </div>
         <div className="flex flex-wrap items-center justify-center">
-          {carImagesForProductCards.map((el, index) => (
-            <ProductCard key={index} images={el} />
-          ))}
+            <ProductCard />
         </div>
       </div>
     </>

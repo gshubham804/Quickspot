@@ -2,8 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 import axiosInstance from "../utils/axios";
 
 const initialState = {
+  cardData: [],
   filteredData: [],
   error: false,
+  productDetailsData: {},
 };
 
 const productSlice = createSlice({
@@ -15,6 +17,12 @@ const productSlice = createSlice({
     },
     updateIsLoading(state, action) {
       state.error = action.payload.error;
+    },
+    updateCardData(state, action) {
+      state.cardData = action.payload.cardData;
+    },
+    updateProductDetailsData(state, action) {
+      state.productDetailsData = action.payload.productDetailsData;
     },
   },
 });
@@ -45,5 +53,48 @@ export const filteredData = (formValues) => {
         console.log(error);
         dispatch(productSlice.actions.updateIsLoading({ error: true }));
       });
+  };
+};
+
+export const getProductData = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axiosInstance.get("/product/getProductData", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      dispatch(
+        productSlice.actions.updateCardData({
+          cardData: response?.data?.data,
+        })
+      );
+    } catch (error) {
+      console.error("Error fetching product data:", error);
+      dispatch(productSlice.actions.updateIsLoading({ error: true }));
+    }
+  };
+};
+
+export const getProductDetailsData = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axiosInstance.get(
+        `/product/getProductDetailsData?id=${id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      dispatch(
+        productSlice.actions.updateProductDetailsData({
+          productDetailsData: response?.data?.data,
+        })
+      );
+    } catch (error) {
+      console.error("Error fetching product data:", error);
+      dispatch(productSlice.actions.updateIsLoading({ error: true }));
+    }
   };
 };

@@ -19,8 +19,12 @@ const userSchema = new mongoose.Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now(),
+    default: Date.now,
   },
+  role:{
+    type:String,
+    enum: ['user', 'admin'],
+  }
 });
 
 // Hooks

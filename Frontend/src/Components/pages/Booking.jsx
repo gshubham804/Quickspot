@@ -68,7 +68,7 @@ const Booking = () => {
                               ? "https://w7.pngwing.com/pngs/545/134/png-transparent-car-pink-racing-driving-car-computer-car-grass.png"
                               : "https://iili.io/JGerz5Q.md.jpg"
                           }
-                          className="cursor-pointer my-3 h-14 w-max"
+                          className="cursor-pointer my-3 h-14 w-max mix-blend-multiply"
                           key={colIndex}
                         />
                       ))}

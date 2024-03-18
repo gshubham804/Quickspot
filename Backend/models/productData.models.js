@@ -44,8 +44,27 @@ const productDataSchema = new mongoose.Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now(),
+    default: Date.now,
   },
+  numberOfZones:{
+    type:Number,
+  },
+  numberOfSlotsEachZone:{
+    type:Number
+  },
+  zones: [
+    {
+      name: String,
+      slots: [
+        {
+          value: {
+            type: Boolean,
+            default: false,
+          },
+        },
+      ],
+    },
+  ],
 });
 
 const productData = new mongoose.model("ProductData", productDataSchema);

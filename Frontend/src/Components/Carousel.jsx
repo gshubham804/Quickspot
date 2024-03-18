@@ -4,11 +4,11 @@ const Carousel = ({ images }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const handlePrevSlide = () => {
-    setCurrentSlide((prev) => (prev > 0 ? prev - 1 : images.length - 1));
+    setCurrentSlide((prev) => (prev > 0 ? prev - 1 : images?.length - 1));
   };
 
   const handleNextSlide = () => {
-    setCurrentSlide((prev) => (prev < images.length - 1 ? prev + 1 : 0));
+    setCurrentSlide((prev) => (prev < images?.length - 1 ? prev + 1 : 0));
   };
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const Carousel = ({ images }) => {
     <div className="relative w-full mt-4 mb-8">
       {/* Carousel wrapper */}
       <div className="relative h-60 sm:h-80 md:h-96 lg:h-[80vh] overflow-hidden rounded-lg">
-        {images.map((el, index) => (
+        {images?.map((el, index) => (
           <div
             key={index}
             className={`px-2 absolute block w-full h-full object-cover transition-opacity ${
@@ -31,7 +31,7 @@ const Carousel = ({ images }) => {
             }`}
           >
             <img
-              src={el?.img}
+              src={el}
               className="rounded-lg w-full h-full object-cover"
               alt={`Slide ${index + 1}`}
             />
@@ -40,7 +40,7 @@ const Carousel = ({ images }) => {
       </div>
       {/* Slider indicators */}
       <div className="absolute z-30 flex bottom-5 left-1/2 transform -translate-x-1/2 space-x-3">
-        {images.map((_, index) => (
+        {images?.map((_, index) => (
           <button
             key={index}
             type="button"
