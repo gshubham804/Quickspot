@@ -6,15 +6,15 @@ const bookingUserSchema = new mongoose.Schema({
     ref: "User",
   },
   date: {
-    type: Date,
+    type: String,
   },
   from: {
-    type: Date,
+    type: String,
   },
   to: {
-    type: Date,
+    type: String,
   },
-  numberOfSlots: {
+  zoneNumber: {
     type: Number,
   },
   SlotNumbers: [Number],

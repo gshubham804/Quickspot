@@ -57,10 +57,15 @@ const productDataSchema = new mongoose.Schema({
       name: String,
       slots: [
         {
-          value: {
-            type: Boolean,
-            default: false,
+          date: {
+            type: String,
           },
+          from: {
+            type: String,
+          },
+          to: {
+            type: String,
+          }
         },
       ],
     },

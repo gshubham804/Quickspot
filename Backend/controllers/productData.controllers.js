@@ -63,7 +63,7 @@ export const postProductData = async (req, res, next) => {
   try {
     const zones = Array.from({ length: numberOfZones }, (_, zoneIndex) => ({
       name: `Zone${zoneIndex}`,
-      slots: Array.from({ length: numberOfSlotsEachZone }, () => ({ value: false })),
+      slots: Array.from({ length: numberOfSlotsEachZone }, () => ({date:"",from:"",to:""})),
     }));
 
     const newProductData = await ProductData.create({

@@ -5,11 +5,11 @@ import { updateSlotsToTrue } from "../utils/slotsUtils.js";
 // to save the booking details of user
 
 export const bookTheParkingSlot = async (req, res, next) => {
-  const { user, data, from, to, companyName, numberOfSlots, SlotNumbers } =
+  const { userId, date, from, to, companyName, companyId, zoneNumber, SlotNumbers } =
     req.body;
 
   try {
-    if (!user || !user.id) {
+    if (!userId) {
       return res.status(400).json({
         status: "error",
         message: "Invalid user information",
@@ -18,17 +18,17 @@ export const bookTheParkingSlot = async (req, res, next) => {
 
     // Create a new booking entry
     const booking = await BookingUser.create({
-      user: user.id,
-      date: new Date(data),
-      from: new Date(from),
-      to: new Date(to),
-      numberOfSlots,
+      user: userId,
+      date,
+      from,
+      to,
+      zoneNumber,
       SlotNumbers,
       companyName,
     });
 
      // Update the corresponding slots to true 
-     await updateSlotsToTrue(companyName, zone, SlotNumbers);
+     await updateSlotsToTrue(companyId, date, from, to, zoneNumber, SlotNumbers);
 
     return res.status(201).json({
       status: "success",
@@ -44,7 +44,6 @@ export const bookTheParkingSlot = async (req, res, next) => {
 };
 
 // to get the booking details of user
-
 
 export const getBookedParkingDetails = async (req, res, next) => {
   const userId = req.params.userId; // Assuming you are passing the user ID as a parameter
