@@ -1,6 +1,5 @@
 import Carousel from "../Carousel";
 import { MapPinLine } from "phosphor-react";
-import { carImagesForProductDetails } from "../data/images";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
 import ProtectedRoute from "../ProtectedRoute";
 import { useEffect } from "react";
@@ -19,7 +18,6 @@ const ProductDetails = () => {
     (state) => state.productData.productDetailsData
   );
 
-  console.log(typeof productData?.ratings);
   return (
     <ProtectedRoute>
       {productData !== null && (
@@ -34,14 +32,18 @@ const ProductDetails = () => {
                 className="text-white bg-red-500 px-8 py-2 rounded-md
              hover:bg-red-600 focus:outline-none focus:ring
               focus:border-red-300 mb-2 md:mb-0 md:mr-2"
-                onClick={() => navigate("booking")}
+                onClick={() =>
+                  navigate("booking")
+                }
               >
                 Book
               </button>
             </div>
             <div className="flex items-center mt-2.5 mb-5">
               <div className="flex items-center space-x-1 rtl:space-x-reverse">
-                {Array.from({ length: parseInt(productData?.ratings) || 0 }).map((_, index) => (
+                {Array.from({
+                  length: parseInt(productData?.ratings) || 0,
+                }).map((_, index) => (
                   <svg
                     key={index}
                     className="w-5 h-5 text-red-500"

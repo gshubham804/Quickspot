@@ -12,12 +12,12 @@ const persistConfig = {
 };
 
 const persistedAuthReducer = persistReducer(persistConfig, authReducer);
-// const persistedProductReducer = persistReducer(persistConfig, productReducer);
+const persistedProductReducer = persistReducer(persistConfig, productReducer);
 
 const store = configureStore({
   reducer: {
     authentication: persistedAuthReducer,
-    productData: productReducer,
+    productData: persistedProductReducer,
     alertData: alertReducer
   },
 });

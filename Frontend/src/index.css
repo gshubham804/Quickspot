@@ -7,6 +7,12 @@
   margin-bottom: 15% !important;
 }
 
+.react-ios-time-picker-popup-overlay {
+  position: fixed !important;
+  background-color: lightslategray !important;
+  opacity: 0.8;
+}
+
 .react-ios-time-picker-btn-container {
   background-color: #ef4444 !important;
   border-bottom: 1px solid #ef4444 !important;

@@ -1,16 +1,17 @@
 import  { useState } from 'react';
 import { TimePicker } from 'react-ios-time-picker';
 
-const MyApp = () => {
+const MyApp = ({ onChange, field}) => {
   const [value, setValue] = useState('10:00');
 
-  const onChange = (timeValue) => {
+  const handleChange = (timeValue) => {
     setValue(timeValue);
+    onChange(field, timeValue);
   }
 
-  return (
+  return (  
     <div>
-      <TimePicker  onChange={onChange} value={value} />
+      <TimePicker  onChange={handleChange} value={value} />
     </div>
   );
 }

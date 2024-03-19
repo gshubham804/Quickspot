@@ -73,7 +73,7 @@ const Navbar = () => {
               className="text-white bg-red-500 px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:border-red-300"
               onClick={() => handleSignup}
             >
-              Signup
+              Signout
             </button>
               }
             </div>
@@ -130,7 +130,7 @@ const Navbar = () => {
                 className="text-red-500 bg-white px-4 py-2 rounded-md border-2 border-red-400 hover:bg-red-100 focus:outline-none focus:ring-red-300 focus:border-red-300"
                 onClick={() => handleSignup()}
               >
-                Signup
+                Signout
               </button>
             )}
           </div>

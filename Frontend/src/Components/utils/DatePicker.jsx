@@ -2,7 +2,7 @@ import { useState } from "react";
 import { DatePicker } from "react-responsive-datepicker";
 import "react-responsive-datepicker/dist/index.css";
 
-const DatePickerUtility = () => {
+const DatePickerUtility = ({ onChange, field}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectDate, setSelectDate] = useState(null);
 
@@ -14,6 +14,7 @@ const DatePickerUtility = () => {
   const handleDateChange = (date) => {
     const dateString = new Date(date).toLocaleDateString();
     setSelectDate(dateString);
+    onChange(field, dateString);
     setIsOpen(false);
   };
 
