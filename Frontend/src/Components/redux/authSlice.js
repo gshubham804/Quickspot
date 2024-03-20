@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axiosInstance from "../utils/axios";
 import { hideAlert, showAlert } from "./alertSlice";
+import { emptyAlertSliceData } from "../utils/EmptyAlertSliceData";
 
 const initialState = {
   isLoggedIn: false,
@@ -76,9 +77,7 @@ export function LoginUser(formValues) {
             message: "Login failed. Please try again.",
           })
         );
-        setTimeout(() => {
-          dispatch(hideAlert());
-        }, 3000);
+        emptyAlertSliceData(dispatch);
       })
       .finally(() => {
         setTimeout(() => {
@@ -121,6 +120,7 @@ export function registerUser(formValues) {
             message: "Login failed. Please try again.",
           })
         );
+        emptyAlertSliceData(dispatch);
         dispatch(authSlice.actions.updateIsLoading({ error: true }));
       })
       .finally(() => {

@@ -8,9 +8,7 @@
 }
 
 .react-ios-time-picker-popup-overlay {
-  position: fixed !important;
-  background-color: lightslategray !important;
-  opacity: 0.8;
+  backdrop-filter: blur(2px);
 }
 
 .react-ios-time-picker-btn-container {
@@ -36,6 +34,10 @@
 
 .react-ios-time-picker-container {
   background-color: white !important;
+}
+
+._3curk {
+  background-color: transparent;
 }
 
 @media only screen and (max-width: 768px) and (min-width: 200px) {

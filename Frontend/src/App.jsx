@@ -12,6 +12,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "./Components/redux/store";
 import { ToastContainer } from "react-toastify";
+import ConfirmationPage from "./Components/pages/ConfirmationPage";
 
 function App() {
   return (
@@ -23,7 +24,13 @@ function App() {
               <Route index element={<Home />} />
               <Route path="productdetails/:id">
                 <Route index element={<ProductDetails />} />
-                <Route path="booking" element={<Booking />} />
+                <Route path="booking">
+                  <Route index element={<Booking />} />
+                  <Route
+                    path="bookingconfirmationpage"
+                    element={<ConfirmationPage />}
+                  />
+                </Route>
               </Route>
               <Route path="aboutus" element={<About />} />
               <Route path="contactus" element={<Contact />} />

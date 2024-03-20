@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { DatePicker } from "react-responsive-datepicker";
 import "react-responsive-datepicker/dist/index.css";
 
-const DatePickerUtility = ({ onChange, field}) => {
+const DatePickerUtility = ({ onChange, field }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectDate, setSelectDate] = useState(null);
 
@@ -19,7 +20,7 @@ const DatePickerUtility = ({ onChange, field}) => {
   };
 
   return (
-    <div>
+    <>
       <label className="block text-lg font-medium mb-1">
         Select Date
         <input
@@ -42,7 +43,7 @@ const DatePickerUtility = ({ onChange, field}) => {
         headerFormat="DD, MM dd"
         colorScheme="#EF4444"
       />
-    </div>
+    </>
   );
 };
 

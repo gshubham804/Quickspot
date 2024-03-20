@@ -5,6 +5,7 @@ import storage from "redux-persist/lib/storage"; // defaults to localStorage
 import authReducer from "./authSlice";
 import productReducer from "./productSlice";
 import alertReducer from "./alertSlice";
+import bookingReducer from "./bookingSlice";
 
 const persistConfig = {
   key: "root",
@@ -18,7 +19,8 @@ const store = configureStore({
   reducer: {
     authentication: persistedAuthReducer,
     productData: persistedProductReducer,
-    alertData: alertReducer
+    alertData: alertReducer,
+    bookingData:bookingReducer,
   },
 });
 

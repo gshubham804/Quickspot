@@ -22,17 +22,15 @@ export const updateSlotsToTrue = async (
     }
 
     // Update the slots to true
-    SlotNumbers.forEach((slot) => {
       // Ensure the slot index is valid
-      if (slot < 0 || slot >= product.zones[zone].slots.length) {
-        throw new Error(`Invalid slot index ${slot} for zone ${zone}`);
+      if (parseInt(SlotNumbers) < 0 || parseInt(SlotNumbers) >= product.zones[zone].slots.length) {
+        throw new Error(`Invalid slot index ${SlotNumbers} for zone ${zone}`);
       }
 
       // Update the slot properties
-      product.zones[zone].slots[slot].date = date;
-      product.zones[zone].slots[slot].from = from;
-      product.zones[zone].slots[slot].to = to;
-    });
+      product.zones[zone].slots[parseInt(SlotNumbers) ].date = date;
+      product.zones[zone].slots[parseInt(SlotNumbers) ].from = from;
+      product.zones[zone].slots[parseInt(SlotNumbers) ].to = to;
 
     // Save the updated product data
     await product.save();
