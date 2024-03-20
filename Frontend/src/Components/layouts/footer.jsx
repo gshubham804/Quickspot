@@ -16,17 +16,17 @@ const Footer = () => {
             </h4>
             <ul className="text-sm">
               <li className="mb-2">
-                <a href="#" className="hover:text-red-500">
+                <a href="/" className="hover:text-red-500">
                   Home
                 </a>
               </li>
               <li className="mb-2">
-                <a href="#" className="hover:text-red-500">
+                <a href="/aboutus" className="hover:text-red-500">
                   About us
                 </a>
               </li>
               <li className="mb-2">
-                <a href="#" className="hover:text-red-500">
+                <a href="/contactus" className="hover:text-red-500">
                   Contact
                 </a>
               </li>
@@ -39,17 +39,17 @@ const Footer = () => {
             </h4>
             <ul className="text-sm">
               <li className="mb-2">
-                <a href="#" className="hover:text-red-500">
+                <a href="/contactus" className="hover:text-red-500">
                   Facebook
                 </a>
               </li>
               <li className="mb-2">
-                <a href="#" className="hover:text-red-500">
+                <a href="/contactus" className="hover:text-red-500">
                   Twitter
                 </a>
               </li>
               <li className="mb-2">
-                <a href="#" className="hover:text-red-500">
+                <a href="/contactus" className="hover:text-red-500">
                   Instagram
                 </a>
               </li>

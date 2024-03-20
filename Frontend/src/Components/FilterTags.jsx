@@ -11,22 +11,10 @@ const FilterTags = () => {
     "Having CCTV",
   ];
 
-  const [selectedFilters, setSelectedFilters] = useState(["All"]);
+  const [selectedFilters, setSelectedFilters] = useState("All");
 
   const toggleFilter = (filter) => {
-    if (filter === "All") {
-      setSelectedFilters(["All"]);
-    } else if (selectedFilters.includes("All")) {
-      setSelectedFilters([filter]);
-    } else {
-      if (selectedFilters.includes(filter)) {
-        setSelectedFilters(
-          selectedFilters.filter((selected) => selected !== filter)
-        );
-      } else {
-        setSelectedFilters([...selectedFilters, filter]);
-      }
-    }
+    setSelectedFilters(filter);
   };
 
   return (
