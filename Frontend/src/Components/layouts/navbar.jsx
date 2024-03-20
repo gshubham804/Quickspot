@@ -10,15 +10,14 @@ const Navbar = () => {
   const [showOptions, setShowOptions] = useState(false);
   const { isLoggedIn } = useSelector((state) => state?.authentication);
 
-
   const toggleOptions = () => {
     setShowOptions(!showOptions);
   };
 
-  const handleSignup=()=>{
+  const handleSignup = () => {
     dispatch(logoutUser());
-    navigate("signup")
-  }
+    navigate("signup");
+  };
 
   return (
     <>
@@ -61,21 +60,21 @@ const Navbar = () => {
 
             {/* Buttons for mobile */}
             <div className="flex flex-col mt-4">
-              {!isLoggedIn ?
-               <button
-               className="text-red-500 bg-white px-4 py-2 rounded-md border-2 border-red-400 hover:bg-red-100 focus:outline-none focus:ring focus:border-red-300 mb-2"
-               onClick={() => navigate("login")}
-             >
-               Login
-             </button>
-              :
-              <button
-              className="text-white bg-red-500 px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:border-red-300"
-              onClick={() => handleSignup}
-            >
-              Signout
-            </button>
-              }
+              {!isLoggedIn ? (
+                <button
+                  className="text-red-500 bg-white px-4 py-2 rounded-md border-2 border-red-400 hover:bg-red-100 focus:outline-none focus:ring focus:border-red-300 mb-2"
+                  onClick={() => navigate("login")}
+                >
+                  Login
+                </button>
+              ) : (
+                <button
+                  className="text-white bg-red-500 px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:border-red-300"
+                  onClick={() => handleSignup}
+                >
+                  Signout
+                </button>
+              )}
             </div>
           </div>
         )}
@@ -127,7 +126,7 @@ const Navbar = () => {
               </button>
             ) : (
               <button
-                className="text-red-500 bg-white px-4 py-2 rounded-md border-2 border-red-400 hover:bg-red-100 focus:outline-none focus:ring-red-300 focus:border-red-300"
+                className="font-medium text-red-500 bg-white px-4 py-2 rounded-md border-2 border-red-400 hover:bg-red-100 focus:outline-none focus:ring-red-300 focus:border-red-300"
                 onClick={() => handleSignup()}
               >
                 Signout
