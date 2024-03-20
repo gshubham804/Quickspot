@@ -2,6 +2,8 @@
 
 It is a comprehensive exploration of fullstack development, where I practice and learn by doing building APIs, crafting middleware, defining routes, UI, managing state and understanding numerous other enlightening concepts.
 
+QuickSpot is a web app through which we can booked the parking slot in any city.
+
 It have both perspective i.e. user and admin panel.
 
 ## Built with
@@ -21,19 +23,33 @@ It have both perspective i.e. user and admin panel.
 
   - Login
   - Register
-  - Send OTP
-  - Verify OTP
-  - Send Email
-  - Forgot password
-  - Reset password
 
 - Search the parking zone with pincode and name of parking zone
 - Show the availability of slot in parking zone
-- Time ended for parking and car wash done
 - Book the slot
-- Send the confirmation messge to user
-- Car wash features
-- Show the alert if car is not in queue
-- User prfile section
-  - Edit/update the profile
-  - See the bookings
+- Downalod the receipt
+
+## Packages Installed
+
+- react-router-dom
+- react-redux
+- html2canvas
+- jspdf
+- redux-persist
+- cloudinary
+- react-toastify
+- redux-toolkit
+
+## Tasks to Be Completed
+
+- Make filter functional
+- Build user component through which user can check their profile or update.
+- Check history in user profile section
+- Login / Signup with Google
+- Send OTP on registration
+- Forgot Password
+- Send confirmation mail after booking the slot
+- Enhance the appearance of the search component.
+- Car wash feature
+- Admin Panel
+
